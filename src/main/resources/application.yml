@@ -1,0 +1,29 @@
+spring:
+  thymeleaf:
+    cache: false
+  security:
+    oauth2:
+      client:
+        registration:
+          # see CommonOAuth2Provider.java for configs for facebook / google
+          facebook:
+            clientId: 423345538359040
+            clientSecret: 79891b3342d81b4213e1fa3670df7898
+          google:
+            clientId: 217331376674-ql41akposrgptbo53u1ulmqh6pjtf5h3.apps.googleusercontent.com
+            clientSecret: qQ31Ub1dQwc_NkOjgB8YFv85
+          # if there is no default config for a provider, you have to define the full config here
+#          linkedin:
+#            client-id: 86jmorecdhmsq7
+#            client-secret: 8bCYegSUKZ9Oup6x
+#            client-authentication-method: post
+#            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+#            authorization-grant-type: authorization_code
+#            scope: r_basicprofile, r_emailaddress
+#            client-name: Linkedin
+#        provider:
+#          linkedin:
+#            authorization-uri: https://www.linkedin.com/oauth/v2/authorization
+#            token-uri: https://www.linkedin.com/oauth/v2/accessToken
+#            user-info-uri: https://api.linkedin.com/v2/people/~?format=json
+#            user-name-attribute: id
