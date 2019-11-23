@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static com.rolea.learning.oauthserver.domain.UserRole.ROLE_ADMIN;
 import static com.rolea.learning.oauthserver.domain.UserRole.ROLE_USER;
@@ -22,7 +23,7 @@ public class DataPopulator {
     private UserAccountRepository repository;
 
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Bean
     public CommandLineRunner initDatabase(){
