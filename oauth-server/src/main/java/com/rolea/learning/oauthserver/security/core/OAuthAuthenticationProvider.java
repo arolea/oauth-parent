@@ -43,6 +43,10 @@ public class OAuthAuthenticationProvider implements AuthenticationProvider {
         }
 
         OAuthUser userDetails = (OAuthUser) userDetailsService.loadUserByUsername(username);
+        if(userDetails == null){
+            return authentication;
+        }
+
         if (!passwordEncoder.matches(password, userDetails.getPassword())) {
             return authentication;
         }

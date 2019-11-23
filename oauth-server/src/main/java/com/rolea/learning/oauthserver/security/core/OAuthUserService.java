@@ -16,7 +16,7 @@ public class OAuthUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) {
         return repository.findByEmail(email)
                 .map(OAuthUser::new)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElse(null);
     }
 
 }
