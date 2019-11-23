@@ -9,6 +9,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @EnableResourceServer
 public class ResourceServer extends ResourceServerConfigurerAdapter {
 
+    // If the ResourceServer would be deployed separately from the AuthorizationServer
+    // We would have to redefine the TokenStore and the JWTAccessConverter here as well
+    // See https://www.baeldung.com/spring-security-oauth-jwt for an example
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
