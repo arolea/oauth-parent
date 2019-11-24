@@ -1,7 +1,5 @@
 package com.rolea.learning.oauthserver.security;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -16,6 +14,7 @@ public class ResourceServer extends ResourceServerConfigurerAdapter {
     // See https://www.baeldung.com/spring-security-oauth-jwt for an example
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        // The default error message for unauthenticated requests can be customized via authenticationEntryPoint
         http.authorizeRequests()
                 .anyRequest()
                 .authenticated();
