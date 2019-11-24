@@ -1,4 +1,4 @@
-package com.rolea.learning.oauthparent.config;
+package com.rolea.learning.oauthclient.config;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;

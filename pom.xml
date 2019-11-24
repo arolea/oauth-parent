@@ -21,10 +21,39 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<lombok.version>1.18.10</lombok.version>
+		<spring.cloud.version>Greenwich.SR3</spring.cloud.version>
+		<spring.security.jwt.version>1.1.0.RELEASE</spring.security.jwt.version>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+	</dependencies>
 
 	<modules>
 		<module>oauth-client</module>
-	</modules>
+        <module>oauth-server</module>
+    </modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring.cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security</groupId>
+				<artifactId>spring-security-jwt</artifactId>
+				<version>${spring.security.jwt.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </project>
