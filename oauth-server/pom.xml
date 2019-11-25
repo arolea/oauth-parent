@@ -37,7 +37,6 @@
         <dependency>
             <groupId>com.google.api-client</groupId>
             <artifactId>google-api-client-servlet</artifactId>
-            <version>1.30.4</version>
         </dependency>
 
         <dependency>

@@ -27,9 +27,6 @@ public class UserAccount {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "facebook_id")
-    private String facebookId;
-
     @Column(name = "google_id")
     private String googleId;
 
