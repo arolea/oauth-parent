@@ -14,6 +14,11 @@ import static com.rolea.learning.oauthserver.domain.UserRole.ROLE_ADMIN;
 import static com.rolea.learning.oauthserver.domain.UserRole.ROLE_USER;
 import static java.util.Arrays.asList;
 
+/**
+ * Populates the DB with sample users
+ * USER: alexrolea1@gmail.com / password
+ * ADMIN: alexrolea93.com / password
+ */
 @Configuration
 public class DataPopulator {
 

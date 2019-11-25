@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Sample fo accessing the access and refresh tokens
- * Note that you can override tokens here
+ * Note that you can override tokens here (for example if you want different expire times)
  */
 @Component
 public class LogEnhancer implements OAuthTokenEnhancer{

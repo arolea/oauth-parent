@@ -1,5 +1,8 @@
 package com.rolea.learning.oauthserver.security.social;
 
+import com.rolea.learning.oauthserver.security.social.impl.GoogleAuthenticator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
@@ -17,8 +20,12 @@ import java.util.function.Function;
 
 import static java.util.stream.Collectors.toMap;
 
+/**
+ * Adds support for the social custom grant type
+ */
 public class SocialTokenGranter extends AbstractTokenGranter {
 
+    private static final Logger LOG = LoggerFactory.getLogger(SocialTokenGranter.class);
     private static final String GRANT_TYPE = "social";
 
     private Map<String, TokenAuthenticator> adaptersMap;
@@ -35,6 +42,8 @@ public class SocialTokenGranter extends AbstractTokenGranter {
 
     @Override
     protected OAuth2Authentication getOAuth2Authentication(ClientDetails client, TokenRequest tokenRequest) {
+        LOG.info("Starting social authentication flow");
+
         Map<String, String> parameters = new LinkedHashMap<>(tokenRequest.getRequestParameters());
         String type = parameters.get("type");
         String token = parameters.get("token");

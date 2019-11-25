@@ -34,12 +34,12 @@ public class JWTEnhancer extends JwtAccessTokenConverter implements OAuthTokenEn
 
     @PostConstruct
     public void init() {
-        // Configuration required so Principal is created based on JWT token
+        // Required so a Principal object is created based on JWT token and injected into the security context
         DefaultAccessTokenConverter tokenConverter = new DefaultAccessTokenConverter();
         DefaultUserAuthenticationConverter authenticationConverter = new DefaultUserAuthenticationConverter();
         authenticationConverter.setUserDetailsService(userDetailsService);
         tokenConverter.setUserTokenConverter(authenticationConverter);
-        // This assumes the signing key is available on the ResourceServer as well
+        // Using a signing key assumes the signing key is available on the ResourceServer as well
         // If this is not possible, use a key pair instead and share the public key with the ResourceServer
         this.setSigningKey(signingKey);
         this.setAccessTokenConverter(tokenConverter);

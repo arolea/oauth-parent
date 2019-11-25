@@ -11,7 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Sample of adding attributes to the /oauth/token endpoint response
+ * Sample of adding attributes to the JWT and to the /oauth/token endpoint response
  */
 @Component
 public class InfoEnhancer implements OAuthTokenEnhancer {

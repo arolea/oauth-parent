@@ -8,8 +8,11 @@ import com.rolea.learning.oauthserver.domain.UserAccount;
 import com.rolea.learning.oauthserver.domain.UserRole;
 import com.rolea.learning.oauthserver.persistence.UserAccountRepository;
 import com.rolea.learning.oauthserver.security.core.OAuthUser;
+import com.rolea.learning.oauthserver.security.enhancers.LogEnhancer;
 import com.rolea.learning.oauthserver.security.social.TokenAuthenticator;
 import lombok.SneakyThrows;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,6 +29,7 @@ import static java.util.Collections.singletonList;
 @Component
 public class GoogleAuthenticator implements TokenAuthenticator {
 
+	private static final Logger LOG = LoggerFactory.getLogger(GoogleAuthenticator.class);
 	private static final String SOCIAL_LOGIN_TYPE = "google";
 
 	@Autowired
@@ -42,7 +46,9 @@ public class GoogleAuthenticator implements TokenAuthenticator {
 	@Override
 	@SneakyThrows
 	public Authentication apply(String token) {
-		// validate JWK
+		LOG.info("Authenticating based on google id token");
+
+		// validate token JWK
 		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport.Builder().build(), JacksonFactory.getDefaultInstance())
 				.setAudience(allowedApps)
 				.build();

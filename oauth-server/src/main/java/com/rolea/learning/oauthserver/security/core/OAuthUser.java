@@ -10,6 +10,9 @@ import org.springframework.security.core.userdetails.User;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Principal data object
+ */
 @Data
 public class OAuthUser extends User {
 

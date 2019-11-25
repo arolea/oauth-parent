@@ -29,6 +29,9 @@ import java.util.stream.Collectors;
 import static java.util.Arrays.asList;
 import static java.util.Comparator.comparing;
 
+/**
+ * Sample authorization server
+ */
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {

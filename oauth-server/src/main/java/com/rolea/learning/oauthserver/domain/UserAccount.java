@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Models an application user
+ */
 @Entity
 @Table(name = "user_account")
 @Data
