@@ -9,8 +9,4 @@ public interface UserAccountRepository extends JpaRepository<UserAccount, Long> 
 
     Optional<UserAccount> findByEmail(String email);
 
-    Optional<UserAccount> findByFacebookId(String facebookId);
-
-    Optional<UserAccount> findByGoogleId(String googleId);
-
 }

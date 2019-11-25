@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+/**
+ * Used by ResourceOwnerPasswordTokenGranter for credentials check
+ */
 @Component
 public class OAuthAuthenticationProvider implements AuthenticationProvider {
 
