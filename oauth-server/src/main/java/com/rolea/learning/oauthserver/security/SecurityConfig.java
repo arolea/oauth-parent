@@ -27,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     // AuthenticationManager can no longer be directly injected in Boot 2+
     // See https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Migration-Guide - AuthenticationManager
+    // This is part of the configuration required by the authorization server
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }

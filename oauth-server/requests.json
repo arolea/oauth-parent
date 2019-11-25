@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "66977cea-5624-4a9a-a6d1-213d7c84e90e",
+		"name": "oauth-server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Google - 1- Generate Code - Run in browser and copy the code parameter from response",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://accounts.google.com/o/oauth2/v2/auth?client_id=217331376674-ql41akposrgptbo53u1ulmqh6pjtf5h3.apps.googleusercontent.com&redirect_uri=http://localhost:8081&scope=email&response_type=code",
+					"protocol": "https",
+					"host": [
+						"accounts",
+						"google",
+						"com"
+					],
+					"path": [
+						"o",
+						"oauth2",
+						"v2",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "217331376674-ql41akposrgptbo53u1ulmqh6pjtf5h3.apps.googleusercontent.com"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "scope",
+							"value": "email"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						}
+					]
+				},
+				"description": "Make sure the redirect url matches the URL defined for the application in Google Developer Console"
+			},
+			"response": []
+		},
+		{
+			"name": "Google - 2 - Generate id token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://www.googleapis.com/oauth2/v4/token?code=4%2FtgHb39XVS04HaLoPWpILIYoW-MyZWoTdpPYIsfNxZ5K_kzPFa8ZOP_fD9B6b89JeqCmg0RKv08mfd4aSJwkGecc&client_id=217331376674-ql41akposrgptbo53u1ulmqh6pjtf5h3.apps.googleusercontent.com&client_secret=qQ31Ub1dQwc_NkOjgB8YFv85&redirect_uri=http://localhost:8081&grant_type=authorization_code",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"oauth2",
+						"v4",
+						"token"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "4%2FtgHb39XVS04HaLoPWpILIYoW-MyZWoTdpPYIsfNxZ5K_kzPFa8ZOP_fD9B6b89JeqCmg0RKv08mfd4aSJwkGecc"
+						},
+						{
+							"key": "client_id",
+							"value": "217331376674-ql41akposrgptbo53u1ulmqh6pjtf5h3.apps.googleusercontent.com"
+						},
+						{
+							"key": "client_secret",
+							"value": "qQ31Ub1dQwc_NkOjgB8YFv85"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Google - 3 - Authenticate ",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "social",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "google",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImRiMDJhYjMwZTBiNzViOGVjZDRmODE2YmI5ZTE5NzhmNjI4NDk4OTQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIyMTczMzEzNzY2NzQtcWw0MWFrcG9zcmdwdGJvNTN1MXVsbXFoNnBqdGY1aDMuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIyMTczMzEzNzY2NzQtcWw0MWFrcG9zcmdwdGJvNTN1MXVsbXFoNnBqdGY1aDMuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDkwMTAzNTI4NjgxMzQ1OTgxNjciLCJlbWFpbCI6ImFsZXhyb2xlYTFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJ5YnJ5cWhZNlNWY1RraGhDak1nWTVnIiwiaWF0IjoxNTc0NjkyNDQxLCJleHAiOjE1NzQ2OTYwNDF9.QEvr-ikyZl0KuYlQSfPRh2ZJo5qd30mShJ59ccAs2bLt-P4Wy4loxdh8-uPczi5WcRmwXQ-WxRjfCANup1Xn5Q02p5czTcBIsCwZrfunN7RzPLpzJepAdEV9E4ngp-Or1aLCi6nX2GnbAW5fUheHNBKmkVMpEcf9h1RizpX7BKuEPvzLWAGTstIPbx0RQYoG5ElB4nF4vDE4PVpdYy0oie6G_F1gV_x4WKlJ1vu0jFlBNJ_t6ji5qUr6b_Jm054-5Dwqgtm5rrwfujkZ_fzVKpmIrD9ce50P2V5uhw6dRfmKiihT3PLKoDiM2nuAtFLvfm_4Ak_JqbaEbn-hAro1Xg",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Get the id_token from the previous response and paste is as token in this one"
+			},
+			"response": []
+		},
+		{
+			"name": "Google - 4 - Consume secured endpoint",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhbGV4cm9sZWExQGdtYWlsLmNvbSIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJjcmVhdGVkX2F0IjoxNTc0NjkyNTcwOTgyLCJleHAiOjE1NzQ2OTYxNzAsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiJdLCJqdGkiOiIwNDgxMzZlYS0xZjFjLTRmNDItOGJhZi1kZjM3ZjM2YWQ3OWYiLCJjbGllbnRfaWQiOiJ0ZXN0In0.wker1_jdw5XyU8TdZQcYayD6IVj0JH_99_YDajasaa4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DB Login",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "alexrolea1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
