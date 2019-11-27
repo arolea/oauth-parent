@@ -7,6 +7,8 @@ import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Component;
 
+import static com.rolea.learning.oauthserver.security.enhancers.EnhancerName.LOG_ENHANCER;
+
 /**
  * Sample fo accessing the access and refresh tokens
  * Note that you can override tokens here (for example if you want different expire times)
@@ -28,6 +30,11 @@ public class LogEnhancer implements OAuthTokenEnhancer{
     @Override
     public int getOrder() {
         return ORDER;
+    }
+
+    @Override
+    public EnhancerName getName() {
+        return LOG_ENHANCER;
     }
 
 }

@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 /**
- * fetches application users by email and converts them to principal objects
+ * Fetches application users by email and converts them to principal objects
  */
 @Primary
 @Component

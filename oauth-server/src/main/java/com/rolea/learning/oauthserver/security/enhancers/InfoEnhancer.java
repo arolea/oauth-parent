@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static com.rolea.learning.oauthserver.security.enhancers.EnhancerName.INFO_ENHANCER;
+
 /**
  * Sample of adding attributes to the JWT and to the /oauth/token endpoint response
  */
@@ -33,6 +35,11 @@ public class InfoEnhancer implements OAuthTokenEnhancer {
     @Override
     public int getOrder() {
         return ORDER;
+    }
+
+    @Override
+    public EnhancerName getName() {
+        return INFO_ENHANCER;
     }
 
 }

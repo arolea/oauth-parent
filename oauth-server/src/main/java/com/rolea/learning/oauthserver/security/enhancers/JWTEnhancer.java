@@ -15,6 +15,8 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+import static com.rolea.learning.oauthserver.security.enhancers.EnhancerName.JWT_ENHANCER;
+
 /**
  * Sample of converting from plain tokens to JWT
  * Note that this is part of the enhancer chain has to be injected into the TokenStore as well
@@ -54,6 +56,11 @@ public class JWTEnhancer extends JwtAccessTokenConverter implements OAuthTokenEn
     @Override
     public int getOrder() {
         return ORDER;
+    }
+
+    @Override
+    public EnhancerName getName() {
+        return JWT_ENHANCER;
     }
 
 }

@@ -9,4 +9,6 @@ public interface OAuthTokenEnhancer extends TokenEnhancer {
 
     int getOrder();
 
+    EnhancerName getName();
+
 }
