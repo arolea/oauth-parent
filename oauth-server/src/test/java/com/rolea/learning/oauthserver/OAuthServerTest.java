@@ -140,10 +140,10 @@ public class OAuthServerTest {
     }
 
     private void decodeJwt(String token){
-        String[] split_string = token.split("\\.");
-        String base64EncodedHeader = split_string[0];
-        String base64EncodedBody = split_string[1];
-        String base64EncodedSignature = split_string[2];
+        String[] tokens = token.split("\\.");
+        String base64EncodedHeader = tokens[0];
+        String base64EncodedBody = tokens[1];
+        String base64EncodedSignature = tokens[2];
 
         Base64 base64Url = new Base64();
 
