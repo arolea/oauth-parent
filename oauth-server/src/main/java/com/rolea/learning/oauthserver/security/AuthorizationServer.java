@@ -64,10 +64,12 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 
 //    @Override
 //    public void configure(AuthorizationServerSecurityConfigurer oauthServer) {
+//        // the endpoints can be used in conjunction with RemoteTokenServices by the ResourceServer
+//	      // if you don't want to configure JWT decoding on that side
 //        oauthServer
 //				// allow any authenticated client to get the signing key (GET /oauth/token_key)
 //                .tokenKeyAccess("isAuthenticated()")
-//				// allow any authenticated client to check weather a token is active (POST /oauth/check_token)
+//				// allow any authenticated client to decode a token (POST /oauth/check_token)
 //                .checkTokenAccess("isAuthenticated()");
 //    }
 
@@ -112,7 +114,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
                 .tokenEnhancer(tokenEnhancerChain)
 				// register custom token granters
 				.tokenGranter(compositeTokenGranter)
-				// processes Authentication requests
+				// processes Authentication requests - required to enable password grant
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService)
                 .reuseRefreshTokens(false);

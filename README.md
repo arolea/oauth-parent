@@ -7,3 +7,7 @@ Demonstrates how to fetch the access token and how to consume the user info endp
 
 Minimal configuration for an Authorization / Resource server
 Supports login via DB credentials, Facebook access token and Google access token
+
+**Documentation**
+
+- [Developer Guide](https://projects.spring.io/spring-security-oauth/docs/oauth2.html)
