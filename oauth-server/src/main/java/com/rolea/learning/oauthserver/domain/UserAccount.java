@@ -33,6 +33,9 @@ public class UserAccount {
     @Column(name = "google_id")
     private String googleId;
 
+    @Column(name = "keycloak_id")
+    private String keycloakId;
+
     @Column(name = "enabled")
     private Boolean enabled;
 

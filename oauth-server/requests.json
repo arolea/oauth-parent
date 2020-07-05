@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "66977cea-5624-4a9a-a6d1-213d7c84e90e",
+		"_postman_id": "d2e4a9a1-0249-4340-a7c3-c3586d3a429f",
 		"name": "oauth-server",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -183,6 +183,272 @@
 					"port": "8080",
 					"path": [
 						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Keycloak Implicit - 1 - Generate Token - Run in browser and get the id token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8180/auth/realms/master/protocol/openid-connect/auth?client_id=login-app&redirect_url=http://localhost:8081&scope=profile&response_type=token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"auth",
+						"realms",
+						"master",
+						"protocol",
+						"openid-connect",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "login-app"
+						},
+						{
+							"key": "redirect_url",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "scope",
+							"value": "profile"
+						},
+						{
+							"key": "response_type",
+							"value": "token"
+						}
+					]
+				},
+				"description": "Make sure the redirect url matches the URL defined for the application in Google Developer Console"
+			},
+			"response": []
+		},
+		{
+			"name": "Keycloak Implicit - 2 - Consume user info endpoint",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "access_token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJBRzVFeTV5ZTJIY0tVZU00Rno0em9kX2JraHJOSFREY2lRWWlKZjhmRjZzIn0.eyJleHAiOjE1OTM5Mjg4ODUsImlhdCI6MTU5MzkyNzk4NSwiYXV0aF90aW1lIjoxNTkzOTI3NjIyLCJqdGkiOiJmNWRmZTlhYi05MTY2LTQ5YjAtYjgzYi0yNTc3MmMyNTU4ZDIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgxODAvYXV0aC9yZWFsbXMvbWFzdGVyIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImZmY2UyNTkwLWZmOWMtNDZjMS05MzJmLTMyMGI3ZGFmMzJjZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImxvZ2luLWFwcCIsInNlc3Npb25fc3RhdGUiOiIyYzRiZWU4ZS1jNGVjLTRkZTAtOWFiYi1iNDIyODU1ODY1ODAiLCJhY3IiOiIwIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJBbGV4IFJvbGVhIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWxleHJvbGVhIiwiZ2l2ZW5fbmFtZSI6IkFsZXgiLCJmYW1pbHlfbmFtZSI6IlJvbGVhIiwiZW1haWwiOiJhbGV4cm9sZWExQGdtYWlsLmNvbSJ9.He0ylP67_fWON-CQ_ujKguM9b9HPjGWdR6SPjFptXOUROcayv8lOD2v7iEsQbeL9Ywv1gSIuK8BRL1kxYlipEgDMBFMluyDUvAICgdXKo-Mf1a-7F-9XijWyfjd-i1gR4xuxyxYu0_qJSwv53bFlqTkotNPS2m7ImGRXZ72dcrCbJiBbdVEzvu7XoHiEdYz0w1H4Bz4Ji4THG6IhEoNvQfIyA2HxbuJNQY13DPl5rpmdokReNkFxHgF1tZERn3dLUCYhJ8BfFCgFP-sCNVBQ5DaX7wP6NVpxkwdPzRVRMQc90C0_SHJMBf4IpprzScE621BvikJFUwwaHYxdtvaz9w",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8180/auth/realms/master/protocol/openid-connect/userinfo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"auth",
+						"realms",
+						"master",
+						"protocol",
+						"openid-connect",
+						"userinfo"
+					]
+				},
+				"description": "Get the id_token from the previous response and paste is as token in this one"
+			},
+			"response": []
+		},
+		{
+			"name": "Keycloak Implicit - 3 - Authenticate",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "test",
+							"type": "string"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "social",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "keycloak",
+							"type": "text"
+						},
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJBRzVFeTV5ZTJIY0tVZU00Rno0em9kX2JraHJOSFREY2lRWWlKZjhmRjZzIn0.eyJleHAiOjE1OTM5MzAwNjQsImlhdCI6MTU5MzkyOTE2NCwiYXV0aF90aW1lIjoxNTkzOTI5MTY0LCJqdGkiOiI1MGUxMjkwNC1mZDYxLTQ0NzUtOTM5ZS1lNTczMWEyY2RhYWUiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgxODAvYXV0aC9yZWFsbXMvbWFzdGVyIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImZmY2UyNTkwLWZmOWMtNDZjMS05MzJmLTMyMGI3ZGFmMzJjZiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImxvZ2luLWFwcCIsInNlc3Npb25fc3RhdGUiOiIzNWJjZjhiMi1lMzc3LTQxMWQtODA5NS02ZjM3ZjFlYmExMzgiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5hbWUiOiJBbGV4IFJvbGVhIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWxleHJvbGVhIiwiZ2l2ZW5fbmFtZSI6IkFsZXgiLCJmYW1pbHlfbmFtZSI6IlJvbGVhIiwiZW1haWwiOiJhbGV4cm9sZWExQGdtYWlsLmNvbSJ9.LJMUcMDr78a8P-9ngORBixAl-7kjam91VGzYLax8pCgrCrtjUvRX03Pl8VVPMiQ-oL6UWDVxFerrh6AwFdBMxTZdxpAMOG3qm2wXrYLsuOJynYXjpnhaOo-loxFOqQu6mTGyB4rWA2dbC40m3tuAFB-L0PtPc00Cg-46SUSWXmJ5kXZzvWqwSusmOfvywq110Tq5S0Dn7xmwE5FsN6-67sOXEoUKxa_eWx2I8Y4-wC2RHdaUEZMPIPTwHWkxcHI9OvV3wgWkf6zlS44eQrV1DptEdsNeOU0FfnyjMC4SHDAe-hZWPeuFMFoBkbM4NUXrpOvTZCAvcmo6EYw1TJlAjg",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Get the id_token from the previous response and paste is as token in this one"
+			},
+			"response": []
+		},
+		{
+			"name": "Keycloak Authorization Code - 1 - Generate Code - Run in browser and copy the code parameter from response",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8180/auth/realms/master/protocol/openid-connect/auth?client_id=login-app&redirect_url=http://localhost:8081&scope=email&response_type=code",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"auth",
+						"realms",
+						"master",
+						"protocol",
+						"openid-connect",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "login-app"
+						},
+						{
+							"key": "redirect_url",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "scope",
+							"value": "email"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						}
+					]
+				},
+				"description": "Make sure the redirect url matches the URL defined for the application in Google Developer Console"
+			},
+			"response": []
+		},
+		{
+			"name": "Keycloak Authorization Code - 2 - Generate id token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8180/auth/realms/master/protocol/openid-connect/auth?code=c84aaab9-4cd7-4816-8c7a-aaaaa42cdf36.2c4bee8e-c4ec-4de0-9abb-b42285586580.2ebeda7f-adb9-450e-9a09-b928b691692e&client_id=login-app&redirect_url=http://localhost:8081&grant_type=authorization_code&response_type=id_token&nonce=2c4bee8e-c4ec-4de0-9abb-b42285586580",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"auth",
+						"realms",
+						"master",
+						"protocol",
+						"openid-connect",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "c84aaab9-4cd7-4816-8c7a-aaaaa42cdf36.2c4bee8e-c4ec-4de0-9abb-b42285586580.2ebeda7f-adb9-450e-9a09-b928b691692e"
+						},
+						{
+							"key": "client_id",
+							"value": "login-app"
+						},
+						{
+							"key": "redirect_url",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code"
+						},
+						{
+							"key": "response_type",
+							"value": "id_token"
+						},
+						{
+							"key": "nonce",
+							"value": "2c4bee8e-c4ec-4de0-9abb-b42285586580"
+						}
 					]
 				}
 			},
